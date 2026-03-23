@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	var name string
+	age := 18
 
-	fmt.Print("Enter your name : ")
-	fmt.Scanln(&name)
-
-	fmt.Println("Hello, :", name)
+	if age >= 18 {
+		fmt.Print("You can Drink!")
+	} else {
+		fmt.Print("You cannot drink")
+	}
 }
