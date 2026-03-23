@@ -3,12 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	var num1 int = 10
-	var num2 int = 20
-
-	var sum int
-
-	sum = num1 + num2
-
-	fmt.Printf("The sum is: %d\n", sum)
+	power := 1000 // The variable should always be used in the code somewhere
+	value := 100
+	fmt.Printf("The value is: %d\n", value)
+	fmt.Printf("default power is %d\n", power)
+	name, power := "Rishi", 99999
+	fmt.Printf("%s's power is over %d\n", name, power)
 }
