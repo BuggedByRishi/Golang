@@ -3,10 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	person := map[string]string{
-		"name":    "Hrushikesh",
-		"surname": "Kakulte",
-	}
+	x := 10
+	p := &x
 
-	fmt.Println(person["name"], person["surname"])
+	fmt.Print("Value : ", x)
+	fmt.Print("Address : ", p)
 }
