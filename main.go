@@ -2,19 +2,11 @@ package main
 
 import "fmt"
 
-type Saiyan struct { // This is the structure defination (blueprint)
-	Name  string
-	Power int
-}
-
-func NewSaiyan(name string, power int) *Saiyan { // Pointer to the structure
-	return &Saiyan{
-		Name:  name,
-		Power: power,
-	}
-}
-
 func main() {
-	goku := NewSaiyan("Goku", 9000)
-	fmt.Println(goku.Name, goku.Power)
+	x := 10
+	p := &x
+
+	fmt.Print("The value of x is : ", x)          // The actual value
+	fmt.Print("\nThe address of x is : ", p)      // Address of the value
+	fmt.Print("\nValues using pointer is : ", *p) // The value Pointe holds
 }
