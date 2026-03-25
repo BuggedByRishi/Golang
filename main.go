@@ -1,11 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+func Message() {
+	fmt.Print("If you are reading this it's too late")
+}
 
 func main() {
-	x := 10
-	p := &x
+	go Message()
 
-	fmt.Print("Value : ", x)
-	fmt.Print("Address : ", p)
+	time.Sleep(5 * time.Second)
 }
