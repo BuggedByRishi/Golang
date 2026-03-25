@@ -2,14 +2,17 @@ package main
 
 import "fmt"
 
-func update(num *int) {
-	*num = 50
+type Person struct {
+	Name string
+}
+
+func changeName(p *Person) {
+	p.Name = "Hrushikesh"
 }
 
 func main() {
-	x := 10
+	p := Person{Name: "Rishi"}
+	changeName(&p)
 
-	update(&x)
-
-	fmt.Print(x)
+	fmt.Print(p.Name)
 }
