@@ -1,20 +1,20 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type Saiyan struct {
+type Saiyan struct { // This is the structure defination (blueprint)
 	Name  string
 	Power int
 }
 
-func main() {
-	goku := &Saiyan{"Goku", 9000}
-	Super(goku)
-	fmt.Println(goku.Power)
+func NewSaiyan(name string, power int) *Saiyan { // Pointer to the structure
+	return &Saiyan{
+		Name:  name,
+		Power: power,
+	}
 }
 
-func Super(s *Saiyan) {
-	s.Power += 10000
+func main() {
+	goku := NewSaiyan("Goku", 9000)
+	fmt.Println(goku.Name, goku.Power)
 }
