@@ -2,15 +2,19 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
-func Message() {
-	fmt.Print("If you are reading this it's too late")
+type Saiyan struct {
+	Name  string
+	Power int
 }
 
 func main() {
-	go Message()
+	goku := &Saiyan{"Goku", 9000}
+	Super(goku)
+	fmt.Println(goku.Power)
+}
 
-	time.Sleep(5 * time.Second)
+func Super(s *Saiyan) {
+	s.Power += 10000
 }
