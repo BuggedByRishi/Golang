@@ -2,17 +2,23 @@ package main
 
 import "fmt"
 
-type Saiyan struct {
-	Power int
-}
-
-func (s *Saiyan) PowerUp() { // Method with Pointer reciever
-	s.Power += 1000
-}
-
 func main() {
-	goku := Saiyan{Power: 9000}
-	goku.PowerUp()
+	a := 10
 
-	fmt.Println(goku.Power)
+	fmt.Println(a)
+	outer()
+}
+
+func outer() {
+	fmt.Println("This is the Outer function")
+	inner()
+}
+
+func inner() {
+	fmt.Println("This is the Inner function")
+	innerMost()
+}
+
+func innerMost() {
+	fmt.Println("This is the innerMost function")
 }
