@@ -2,23 +2,12 @@ package main
 
 import "fmt"
 
+type person struct {
+	name string
+	age  int
+}
+
 func main() {
-	a := 10
-
-	fmt.Println(a)
-	outer()
-}
-
-func outer() {
-	fmt.Println("This is the Outer function")
-	inner()
-}
-
-func inner() {
-	fmt.Println("This is the Inner function")
-	innerMost()
-}
-
-func innerMost() {
-	fmt.Println("This is the innerMost function")
+	p := person{name: "Rishi", age: 21}
+	fmt.Println(p.name, p.age)
 }
