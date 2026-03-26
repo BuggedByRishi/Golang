@@ -14,5 +14,5 @@ func main() {
 	c := Counter{Value: 0}
 	c.Increment()
 
-	fmt.Println(c.Value) // 1
+	fmt.Println(c.Value)
 }
