@@ -1,0 +1,118 @@
+# 🚀 Go (Golang) Learning Roadmap
+
+This repository documents my journey of learning Go from beginner to advanced, including concepts, practice code, and projects.
+
+---
+
+## 🔹 Phase 1: Fundamentals (Current Stage)
+
+### 📚 Topics
+- Variables & Data Types  
+- Control Flow (`if`, `for`, `switch`)  
+- Functions  
+- Arrays, Slices, Maps  
+- Structs  
+
+### 🎯 Goal
+Write basic programs without confusion and understand core syntax.
+
+---
+
+## 🔹 Phase 2: Core Go (Very Important)
+
+### 📚 Topics
+- Pointers  
+- Methods (Value vs Pointer Receiver)  
+- Interfaces ⭐  
+- Error Handling (`error`)  
+- Packages & Modules  
+- File Structure  
+
+### 🎯 Goal
+Understand how Go is designed and how real programs are structured.
+
+---
+
+## 🔹 Phase 3: Concurrency (Go’s Superpower ⚡)
+
+### 📚 Topics
+- Goroutines  
+- Channels  
+- `select`  
+- `sync.WaitGroup`  
+- Mutex  
+
+### 🎯 Goal
+Write safe and efficient concurrent programs.
+
+---
+
+## 🔹 Phase 4: Real Backend Development
+
+### 📚 Topics
+- HTTP Servers (`net/http`)  
+- REST APIs  
+- JSON Handling  
+- Middleware  
+- Logging  
+
+### 🛠️ Projects
+- Simple API  
+- Authentication System  
+- CRUD Application  
+
+### 🎯 Goal
+Build real-world backend systems using Go.
+
+---
+
+## 🔹 Phase 5: Advanced Go
+
+### 📚 Topics
+- Context (`context.Context`)  
+- Memory Optimization  
+- Garbage Collection  
+- Profiling (`pprof`)  
+- Reflection (Basics)  
+
+### 🎯 Goal
+Understand performance and internal working of Go.
+
+---
+
+## 🔹 Phase 6: Production Level
+
+### 📚 Topics
+- Project Structure (`cmd`, `pkg`, etc.)  
+- Testing (`go test`)  
+- Docker  
+- Deployment  
+
+### 🎯 Goal
+Build production-ready, scalable Go applications.
+
+---
+
+## 🔥 Learning Approach
+
+- Practice daily  
+- Build small projects  
+- Focus on concepts, not just syntax  
+- Break and debug code to learn faster  
+
+---
+
+## 📌 Progress Tracking
+
+- [ ] Phase 1: Fundamentals  
+- [ ] Phase 2: Core Go  
+- [ ] Phase 3: Concurrency  
+- [ ] Phase 4: Backend Development  
+- [ ] Phase 5: Advanced Go  
+- [ ] Phase 6: Production Level  
+
+---
+
+## 🚀 Goal
+
+To become proficient in Go and build scalable backend systems and high-performance applications.
