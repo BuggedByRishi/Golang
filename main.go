@@ -2,15 +2,17 @@ package main
 
 import "fmt"
 
-type Person struct {
-	Name string
+type Counter struct {
+	Value int
 }
 
-func (p Person) Greet() {
-	fmt.Println("Hello,", p.Name)
+func (c *Counter) Increment() {
+	c.Value++
 }
 
 func main() {
-	p := Person{Name: "John"}
-	p.Greet()
+	c := Counter{Value: 0}
+	c.Increment()
+
+	fmt.Println(c.Value) // 1
 }
