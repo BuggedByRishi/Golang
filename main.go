@@ -2,14 +2,20 @@ package main
 
 import "fmt"
 
+type Animal struct {
+	name string
+}
+
+type Dog struct {
+	Animal
+	Breed string
+}
+
 func main() {
-	p := struct {
-		Name string
-		Age  int
-	}{
-		Name: "John",
-		Age:  25,
+	p := Dog{
+		Animal: Animal{name: "Sheru"},
+		Breed:  "Street Dog",
 	}
 
-	fmt.Println(p.Name, p.Age)
+	fmt.Println(p.name, p.Breed)
 }
