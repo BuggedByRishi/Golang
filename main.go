@@ -2,23 +2,30 @@ package main
 
 import "fmt"
 
-type shape interface { // 2
-	Area() int // This is the interface
+type Payment interface {
+	Pay(amount int)
 }
 
-type rectangle struct { // 3
-	width, height int // This is the structure
+type upi struct{}
+
+func (u upi) Pay(amount int) {
+	fmt.Println("Paid via UPI: ", amount)
 }
 
-func (r rectangle) Area() int { // 4
-	return r.height * r.width
+type card struct{}
+
+func (c card) Pay(amount int) {
+	fmt.Println("Paid via Card: ", amount)
 }
 
-func printArea(s shape) { // 5
-	fmt.Println(s.Area())
+func processPayment(p Payment) {
+	p.Pay(10000000000)
 }
 
-func main() { // 1
-	r := rectangle{10, 20}
-	printArea(r)
+func main() {
+	u := upi{} // Object creation			// This is for UPI payment
+	processPayment(u)
+
+	c := card{}       // Object creation
+	processPayment(c) // This if for CARD PAyment
 }
