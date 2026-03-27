@@ -5,16 +5,22 @@ import (
 	"net/http"
 )
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome to the GO server")
-	fmt.Fprintln(w, "IF YOU ARE READING THIS IT'S TOO LATE")
+func divideHandler(w http.ResponseWriter, r *http.Request) {
+	a := 10
+	b := 0
+
+	if b == 0 {
+		http.Error(w, "Cannot divide by Zero", http.StatusBadRequest)
+		return
+	}
+
+	result := a / b
+	fmt.Fprintln(w, "Result:", result)
 }
 
 func main() {
-	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/divide", divideHandler)
 
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Println("Server error:", err)
-	}
+	fmt.Println("Server running on http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
 }
