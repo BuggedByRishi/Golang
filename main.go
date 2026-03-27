@@ -5,22 +5,25 @@ import (
 	"fmt"
 )
 
-func checkEven(n int) error {
-	if n%2 != 0 {
-		return errors.New("not an even number")
+func withdraw(balance, amount int) (int, error) {
+	if amount > balance {
+		return balance, errors.New("Insufficient Balancde")
 	}
-	return nil
+	return balance - amount, nil
 }
 
 func main() {
-	num := 7
+	amount := 10000000000000
+	balance := 1000000000
 
-	err := checkEven(num)
+	newBalance, err := withdraw(balance, amount)
 
 	if err != nil {
 		fmt.Println("Error:", err)
+		fmt.Println("Current Balance:", newBalance)
 		return
 	}
 
-	fmt.Println("Number is even: ", num)
+	fmt.Println("Withdrawal successful!")
+	fmt.Println("Remaining Balance:", newBalance)
 }
