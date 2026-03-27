@@ -1,29 +1,20 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"net/http"
 )
 
-func withdraw(balance, amount int) (int, error) {
-	if amount > balance {
-		return balance, errors.New("Insufficient Balancde")
-	}
-	return balance - amount, nil
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to the GO server")
+	fmt.Fprintln(w, "IF YOU ARE READING THIS IT'S TOO LATE")
 }
 
 func main() {
-	amount := 10000000000000
-	balance := 1000000000
+	http.HandleFunc("/", homeHandler)
 
-	newBalance, err := withdraw(balance, amount)
-
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
-		fmt.Println("Error:", err)
-		fmt.Println("Current Balance:", newBalance)
-		return
+		fmt.Println("Server error:", err)
 	}
-
-	fmt.Println("Withdrawal successful!")
-	fmt.Println("Remaining Balance:", newBalance)
 }
