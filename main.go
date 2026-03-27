@@ -2,28 +2,23 @@ package main
 
 import "fmt"
 
-type Speaker interface { // This is the Interface
-	Speak()
+type shape interface { // 2
+	Area() int // This is the interface
 }
 
-type Dog struct{} // Thsi is the structure
-
-func (d Dog) Speak() {
-	fmt.Println("Woof!")
+type rectangle struct { // 3
+	width, height int // This is the structure
 }
 
-type cat struct{}
-
-func (c cat) Speak() {
-	fmt.Println("Meow!")
+func (r rectangle) Area() int { // 4
+	return r.height * r.width
 }
 
-func main() {
-	var s Speaker
+func printArea(s shape) { // 5
+	fmt.Println(s.Area())
+}
 
-	s = Dog{}
-	s.Speak()
-
-	s = cat{}
-	s.Speak()
+func main() { // 1
+	r := rectangle{10, 20}
+	printArea(r)
 }
