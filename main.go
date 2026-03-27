@@ -2,20 +2,28 @@ package main
 
 import "fmt"
 
-type calculation struct {
-	num1, num2 int
+type Speaker interface { // This is the Interface
+	Speak()
 }
 
-func (c calculation) sum() int { // Method for sum
-	return c.num1 + c.num2 // Methos is not like a function
+type Dog struct{} // Thsi is the structure
+
+func (d Dog) Speak() {
+	fmt.Println("Woof!")
 }
 
-func (c calculation) mul() int { // Method for multiplication
-	return c.num1 * c.num2
+type cat struct{}
+
+func (c cat) Speak() {
+	fmt.Println("Meow!")
 }
 
 func main() {
-	cal := calculation{10, 20}
-	fmt.Println("The sum of two numbers is : ", cal.sum())
-	fmt.Println("The multiplication of two numbers is : ", cal.mul())
+	var s Speaker
+
+	s = Dog{}
+	s.Speak()
+
+	s = cat{}
+	s.Speak()
 }
