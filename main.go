@@ -5,22 +5,25 @@ import (
 	"net/http"
 )
 
-func divideHandler(w http.ResponseWriter, r *http.Request) {
-	a := 10
-	b := 0
+func userHandler(w http.ResponseWriter, r *http.Request) {
+	name := r.URL.Query().Get("name")
 
-	if b == 0 {
-		http.Error(w, "Cannot divide by Zero", http.StatusBadRequest)
+	if name == "" {
+		http.Error(w, "Name is required", http.StatusBadRequest)
 		return
 	}
 
-	result := a / b
-	fmt.Fprintln(w, "Result:", result)
+	fmt.Fprintf(w, "Hello %s", name)
 }
 
 func main() {
-	http.HandleFunc("/divide", divideHandler)
+	http.HandleFunc("/user", userHandler)
 
 	fmt.Println("Server running on http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("Server error:", err)
+	}
 }
+
+// localhost:8080/user?name=rishi
