@@ -1,23 +1,30 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
 
-func userHandler(w http.ResponseWriter, r *http.Request) {
-	name := r.URL.Query().Get("name")
+type User struct {
+	Name string `json:"name"`
+}
 
-	if name == "" {
-		http.Error(w, "Name is required", http.StatusBadRequest)
+func createUser(w http.ResponseWriter, r *http.Request) {
+	var user User
+
+	err := json.NewDecoder(r.Body).Decode(&user)
+	if err != nil {
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
 		return
 	}
 
-	fmt.Fprintf(w, "Hello %s", name)
+	json.NewEncoder(w).Encode(user)
 }
 
+// ✅ main function added here
 func main() {
-	http.HandleFunc("/user", userHandler)
+	http.HandleFunc("/user", createUser)
 
 	fmt.Println("Server running on http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
@@ -25,5 +32,3 @@ func main() {
 		fmt.Println("Server error:", err)
 	}
 }
-
-// localhost:8080/user?name=rishi
