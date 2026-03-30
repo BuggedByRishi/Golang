@@ -3,11 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello")
 	defer fmt.Println("World")
+	fmt.Println("Hello")
 }
 
-/* As function executes line by line this will also execute line by line
-Output: Hello
+/*  Now the order is reversed the output will still be the same because the defer statement will execute
+	just before the ending curly braces of the main function, so the output will be:
+
+	Output: Hello
         World
 */
