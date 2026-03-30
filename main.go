@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 )
 
@@ -23,4 +24,15 @@ func main() {
 	}
 	fmt.Println("Length is: ", length)
 	defer file.Close()
+	readFile("./myfile.txt")
+}
+
+func readFile(fliename string) {
+	databyte, err := ioutil.ReadFile(fliename)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Text data inside the file is \n", string(databyte))
 }
