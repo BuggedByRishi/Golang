@@ -4,12 +4,16 @@ import "fmt"
 
 func main() {
 	defer fmt.Println("World")
+	defer fmt.Println("One")
+	defer fmt.Println("Two")
 	fmt.Println("Hello")
 }
 
-/*  Now the order is reversed the output will still be the same because the defer statement will execute
-	just before the ending curly braces of the main function, so the output will be:
+/*
+This code will follow the LIFO (Last In First Out)
 
-	Output: Hello
-        World
+Two <- One <- World
+
+Two is the last element and will be the first to execute
+
 */
