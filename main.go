@@ -1,17 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"os"
+)
 
 func main() {
-	defer fmt.Println("World")
-	defer fmt.Println("One")
-	defer fmt.Println("Two")
-	fmt.Println("Hello")
-	myDefer()
-}
+	fmt.Println("Welcome to the files in Go Lang")
+	content := "If you are reading this it's too late"
 
-func myDefer() {
-	for i := 1; i < 5; i++ {
-		defer fmt.Println(i)
+	file, err := os.Create("./myfile.txt")
+
+	if err != nil {
+		panic(err)
 	}
+
+	length, err := io.WriteString(file, content)
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Length is: ", length)
+	defer file.Close()
 }
