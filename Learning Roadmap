@@ -7,11 +7,11 @@ This repository documents my journey of learning Go from beginner to advanced, i
 ## 🔹 Phase 1: Fundamentals (Current Stage)
 
 ### 📚 Topics
-- Variables & Data Types  
-- Control Flow (`if`, `for`, `switch`)  
-- Functions  
-- Arrays, Slices, Maps  
-- Structs  
+- Variables & Data Types                        DONE
+- Control Flow (`if`, `for`, `switch`)          DONE
+- Functions                                     DONE
+- Arrays, Slices, Maps                          DONE
+- Structs                                       DONE
 
 ### 🎯 Goal
 Write basic programs without confusion and understand core syntax.
@@ -21,11 +21,11 @@ Write basic programs without confusion and understand core syntax.
 ## 🔹 Phase 2: Core Go (Very Important)
 
 ### 📚 Topics
-- Pointers  
-- Methods (Value vs Pointer Receiver)  
-- Interfaces ⭐  
-- Error Handling (`error`)  
-- Packages & Modules  
+- Pointers                                      DONE
+- Methods (Value vs Pointer Receiver)           DONE
+- Interfaces ⭐                                DONE
+- Error Handling (`error`)                      DONE
+- Packages & Modules                            
 - File Structure  
 
 ### 🎯 Goal

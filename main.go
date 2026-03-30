@@ -22,7 +22,6 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(user)
 }
 
-// ✅ main function added here
 func main() {
 	http.HandleFunc("/user", createUser)
 
