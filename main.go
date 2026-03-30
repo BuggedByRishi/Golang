@@ -7,13 +7,11 @@ func main() {
 	defer fmt.Println("One")
 	defer fmt.Println("Two")
 	fmt.Println("Hello")
+	myDefer()
 }
 
-/*
-This code will follow the LIFO (Last In First Out)
-
-Two <- One <- World
-
-Two is the last element and will be the first to execute
-
-*/
+func myDefer() {
+	for i := 1; i < 5; i++ {
+		defer fmt.Println(i)
+	}
+}
