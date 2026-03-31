@@ -3,13 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	ch := make(chan string)
+	done := make(chan bool)
 
 	go func() {
-		ch <- "If you are reading this it's too late..."
+		fmt.Println("Work Done")
+		done <- true
 	}()
-
-	print := <-ch
-
-	fmt.Println(print)
+	<-done
+	fmt.Println("Main Finished")
 }
