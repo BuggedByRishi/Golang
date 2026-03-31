@@ -37,10 +37,10 @@ Understand how Go is designed and how real programs are structured.
 
 ### 📚 Topics
 - Goroutines                                    DONE
-- Channels                                      
+- Channels                                      DONE
 - `select`  
 - `sync.WaitGroup`  
-- Mutex  
+- Mutex                                         DONE
 
 ### 🎯 Goal
 Write safe and efficient concurrent programs.
@@ -50,7 +50,7 @@ Write safe and efficient concurrent programs.
 ## 🔹 Phase 4: Real Backend Development
 
 ### 📚 Topics
-- HTTP Servers (`net/http`)  
+- HTTP Servers (`net/http`)                     DONE
 - REST APIs  
 - JSON Handling  
 - Middleware  
