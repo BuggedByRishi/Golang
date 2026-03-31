@@ -36,8 +36,8 @@ Understand how Go is designed and how real programs are structured.
 ## 🔹 Phase 3: Concurrency (Go’s Superpower ⚡)
 
 ### 📚 Topics
-- Goroutines                                    
-- Channels  
+- Goroutines                                    DONE
+- Channels                                      
 - `select`  
 - `sync.WaitGroup`  
 - Mutex  
