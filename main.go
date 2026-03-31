@@ -2,15 +2,14 @@ package main
 
 import "fmt"
 
-func sendData(ch chan string) {
-	ch <- "Hello from goroutine"
-}
-
 func main() {
 	ch := make(chan string)
 
-	go sendData(ch)
+	go func() {
+		ch <- "If you are reading this it's too late..."
+	}()
 
-	msg := <-ch // receive data
-	fmt.Println(msg)
+	print := <-ch
+
+	fmt.Println(print)
 }
