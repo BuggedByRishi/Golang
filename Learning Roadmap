@@ -25,8 +25,8 @@ Write basic programs without confusion and understand core syntax.
 - Methods (Value vs Pointer Receiver)           DONE
 - Interfaces ⭐                                DONE
 - Error Handling (`error`)                      DONE
-- Packages & Modules                            
-- File Structure  
+- Packages & Modules                            DONE
+- File Structure                                DONE
 
 ### 🎯 Goal
 Understand how Go is designed and how real programs are structured.
@@ -36,7 +36,7 @@ Understand how Go is designed and how real programs are structured.
 ## 🔹 Phase 3: Concurrency (Go’s Superpower ⚡)
 
 ### 📚 Topics
-- Goroutines  
+- Goroutines                                    
 - Channels  
 - `select`  
 - `sync.WaitGroup`  
