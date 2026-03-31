@@ -5,15 +5,14 @@ import (
 	"time"
 )
 
-func display(str string) {
-	for i := 0; i < 3; i++ {
-		fmt.Println(str)
-	}
-}
-
 func main() {
-	go display("Hello, Goroutine!")
+	go func(s string) {
+		for i := 0; i < 3; i++ {
+			fmt.Println(s)
+			time.Sleep(500 * time.Millisecond)
+		}
+	}("Hello from Anonymous Goroutine!")
 
 	time.Sleep(2 * time.Second)
-	display("Hello, Main!")
+	fmt.Println("Main function complete.")
 }
