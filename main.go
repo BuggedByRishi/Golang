@@ -2,37 +2,16 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"io/ioutil"
-	"os"
+	"time"
 )
 
-func main() {
-	fmt.Println("Welcome to the files in Go Lang")
-	content := "If you are reading this it's too late"
-
-	file, err := os.Create("./myfile.txt")
-
-	if err != nil {
-		panic(err)
-	}
-
-	length, err := io.WriteString(file, content)
-
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Length is: ", length)
-	defer file.Close()
-	readFile("./myfile.txt")
+func Drake() {
+	fmt.Println("If you are reading this it's too late")
 }
 
-func readFile(fliename string) {
-	databyte, err := ioutil.ReadFile(fliename)
+func main() {
+	go Drake()
 
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Text data inside the file is \n", string(databyte))
+	time.Sleep(1 * time.Second)
+	fmt.Println("Inside the Main function ")
 }
