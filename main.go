@@ -1,18 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
+
+const url = "https://lco.dev"
 
 func main() {
-	ch := make(chan int)
+	fmt.Println("Web request for LCOs")
 
-	go func() {
-		for i := 0; i < 5; i++ {
-			ch <- i
-		}
-		close(ch)
-	}()
+	response, err := http.Get(url)
 
-	for num := range ch {
-		fmt.Println(num)
+	if err != nil {
+		panic(err)
 	}
+
+	fmt.Printf("Response is of type %T\n", response)
+
+	defer response.Body.Close()
+
+	databytes, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	content := string(databytes)
+	fmt.Println(content)
 }
