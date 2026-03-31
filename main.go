@@ -5,13 +5,14 @@ import (
 	"time"
 )
 
-func Drake() {
-	fmt.Println("If you are reading this it's too late")
+func main() {
+	go greeter("Hello")
+	greeter("World")
 }
 
-func main() {
-	go Drake()
-
-	time.Sleep(1 * time.Second)
-	fmt.Println("Inside the Main function ")
+func greeter(s string) {
+	for i := 0; i < 6; i++ {
+		time.Sleep(3 * time.Second)
+		fmt.Println(s)
+	}
 }
