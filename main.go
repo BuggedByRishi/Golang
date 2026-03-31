@@ -1,18 +1,16 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
+
+func sendData(ch chan string) {
+	ch <- "Hello from goroutine"
+}
 
 func main() {
-	go func(s string) {
-		for i := 0; i < 3; i++ {
-			fmt.Println(s)
-			time.Sleep(500 * time.Millisecond)
-		}
-	}("Hello from Anonymous Goroutine!")
+	ch := make(chan string)
 
-	time.Sleep(2 * time.Second)
-	fmt.Println("Main function complete.")
+	go sendData(ch)
+
+	msg := <-ch // receive data
+	fmt.Println(msg)
 }
