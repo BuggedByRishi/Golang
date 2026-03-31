@@ -2,23 +2,18 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"time"
 )
 
-func primeNumbers(wg *sync.WaitGroup) {
-	defer wg.Done()
-
-	for i := 0; i <= 5; i++ {
-		fmt.Println(i)
+func display(str string) {
+	for i := 0; i < 3; i++ {
+		fmt.Println(str)
 	}
 }
 
 func main() {
-	var wg sync.WaitGroup
+	go display("Hello, Goroutine!")
 
-	wg.Add(1)
-	go primeNumbers(&wg)
-
-	wg.Wait()
-	fmt.Println("Done")
+	time.Sleep(2 * time.Second)
+	display("Hello, Main!")
 }
