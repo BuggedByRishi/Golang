@@ -1,14 +1,13 @@
 package main
 
-import "fmt"
-
 func main() {
-	done := make(chan bool)
+	ch := make(chan int, 30)
 
-	go func() {
-		fmt.Println("Work Done")
-		done <- true
-	}()
-	<-done
-	fmt.Println("Main Finished")
+	ch <- 10
+	ch <- 20
+	ch <- 30
+
+	println(<-ch)
+	println(<-ch)
+	println(<-ch)
 }
