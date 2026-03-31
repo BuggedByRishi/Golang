@@ -2,30 +2,19 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"net/http"
+	"net/url"
 )
 
-const url = "https://lco.dev"
+const myurl string = "https://lco.dev:3000/learn"
 
 func main() {
-	fmt.Println("Web request for LCOs")
+	fmt.Println("Welcome to handeling URL's in Golang")
+	fmt.Println(myurl)
 
-	response, err := http.Get(url)
+	// Parsing the URL
 
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("Response is of type %T\n", response)
-
-	defer response.Body.Close()
-
-	databytes, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		panic(err)
-	}
-
-	content := string(databytes)
-	fmt.Println(content)
+	result, _ := url.Parse(myurl)
+	fmt.Println(result.Scheme)
+	fmt.Println(result.Host)
+	fmt.Println(result.Path)
 }
