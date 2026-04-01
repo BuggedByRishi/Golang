@@ -1,20 +1,26 @@
 package main
 
 import (
-	"fmt"
-	"net/url"
+	"log"
+	"net/http"
 )
 
-const myurl string = "https://lco.dev:3000/learn"
-
+// Define a home handler function which writes a byte slice containing
+// "Hello from Snippetbox" as the response body.
+func home(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("𓅓 If you are reading this, It's too late... 𓅓"))
+}
 func main() {
-	fmt.Println("Welcome to handeling URL's in Golang")
-	fmt.Println(myurl)
-
-	// Parsing the URL
-
-	result, _ := url.Parse(myurl)
-	fmt.Println(result.Scheme)
-	fmt.Println(result.Host)
-	fmt.Println(result.Path)
+	// Use the http.NewServeMux() function to initialize a new servemux, then
+	// register the home function as the handler for the "/" URL pattern.
+	mux := http.NewServeMux() // request multiplexer(SerceMux)
+	mux.HandleFunc("/", home)
+	// Use the http.ListenAndServe() function to start a new web server. We pass in
+	// two parameters: the TCP network address to listen on (in this case ":4000")
+	// and the servemux we just created. If http.ListenAndServe() returns an error
+	// we use the log.Fatal() function to log the error message and exit. Note
+	// that any error returned by http.ListenAndServe() is always non-nil.
+	log.Println("Starting server on :4000")
+	err := http.ListenAndServe(":4000", mux)
+	log.Fatal(err)
 }
