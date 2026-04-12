@@ -5,18 +5,14 @@ import (
 	"time"
 )
 
-func sayHello() {
-	for i := 1; i <= 3; i++ {
-		fmt.Println("Hello", i)
-		time.Sleep(time.Millisecond * 500)
-	}
+func task() {
+	fmt.Println("Task Started")
+	time.Sleep(2 * time.Second)
+	fmt.Println("Task finished")
 }
 
 func main() {
-	go sayHello() // runs in background
+	go task()
 
-	for i := 1; i <= 3; i++ {
-		fmt.Println("Main", i)
-		time.Sleep(time.Millisecond * 500)
-	}
+	time.Sleep(3 * time.Second)
 }
