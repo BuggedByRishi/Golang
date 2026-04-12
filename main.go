@@ -5,14 +5,23 @@ import (
 	"time"
 )
 
-func task() {
-	fmt.Println("Task Started")
-	time.Sleep(2 * time.Second)
-	fmt.Println("Task finished")
+func printNumbers() {
+	for i := 1; i <= 5; i++ {
+		fmt.Println("Numbers: ", i)
+		time.Sleep(time.Millisecond * 300)
+	}
+}
+
+func printLetters() {
+	for i := 'A'; i <= 'Z'; i++ {
+		fmt.Println("Letters: ", string(i))
+		time.Sleep(time.Millisecond * 300)
+	}
 }
 
 func main() {
-	go task()
+	go printLetters()
+	go printNumbers()
 
-	time.Sleep(3 * time.Second)
+	time.Sleep(2 * time.Second)
 }
