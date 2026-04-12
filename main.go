@@ -1,26 +1,52 @@
 package main
 
 import (
-	"log"
-	"net/http"
+	"fmt"
+	"math"
 )
 
-// Define a home handler function which writes a byte slice containing
-// "Hello from Snippetbox" as the response body.
-func home(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("𓅓 If you are reading this, It's too late... 𓅓"))
+type shape interface {
+	Area() float64
 }
+
+type rectangle struct {
+	width, height float64
+}
+
+func (r rectangle) Area() float64 {
+	return r.width * r.height
+}
+
+type Circle struct {
+	radius float64
+}
+
+func (c Circle) Area() float64 {
+	return math.Pi * c.radius * c.radius
+}
+
+func calculateArea(s shape) float64 {
+	return s.Area()
+}
+
 func main() {
-	// Use the http.NewServeMux() function to initialize a new servemux, then
-	// register the home function as the handler for the "/" URL pattern.
-	mux := http.NewServeMux() // request multiplexer(SerceMux)
-	mux.HandleFunc("/", home)
-	// Use the http.ListenAndServe() function to start a new web server. We pass in
-	// two parameters: the TCP network address to listen on (in this case ":4000")
-	// and the servemux we just created. If http.ListenAndServe() returns an error
-	// we use the log.Fatal() function to log the error message and exit. Note
-	// that any error returned by http.ListenAndServe() is always non-nil.
-	log.Println("Starting server on :4000")
-	err := http.ListenAndServe(":4000", mux)
-	log.Fatal(err)
+	rect := rectangle{height: 5, width: 4}
+	circle := Circle{radius: 2}
+
+	fmt.Println(
+		"Rectangle Area:",
+		calculateArea(rect),
+	)
+
+	fmt.Println(
+		"Circle Area:",
+		calculateArea(circle),
+	)
+
+	mysterBox := interface{}(10)
+	describeValue(mysterBox)
+}
+
+func describeValue(t interface{}) { // empty interface can accept any type
+	fmt.Printf("Type: %T, Value: %v\n", t, t)
 }
