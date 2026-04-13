@@ -2,18 +2,45 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 )
 
-func main() {
-	ch := make(chan int, 2) // Buffer channel(will execute 2 iterations of the loop before blocking)
+type User struct {
+	ID   int
+	Name string
+}
 
-	go func() {
-		for i := 0; i < 5; i++ {
-			ch <- i
-		}
-	}()
+type UserRepository interface {
+	GetUserByID(id int) (User, error)
+}
 
-	for i := 0; i <= 3; i++ {
-		fmt.Println(<-ch)
+type InMemoryUserRepo struct{}
+
+func (r InMemoryUserRepo) GetUserByID(id int) (User, error) {
+	return User{ID: 1, Name: "Hrushikesh Kakulte"}, nil
+}
+
+type UserService struct {
+	repo UserRepository
+}
+
+func (s UserService) HandleGetUser(w http.ResponseWriter, r *http.Request) {
+	user, err := s.repo.GetUserByID(1)
+
+	if err != nil {
+		fmt.Fprintln(w, "User not found")
+		return
 	}
+
+	fmt.Fprintln(w, "User:", user.Name)
+}
+
+func main() {
+	repo := InMemoryUserRepo{}
+	service := UserService{repo: repo}
+
+	http.HandleFunc("/user", service.HandleGetUser)
+
+	fmt.Println("Server running on :8080")
+	http.ListenAndServe(":8080", nil)
 }
