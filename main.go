@@ -4,15 +4,16 @@ import (
 	"fmt"
 )
 
-func square(num int, ch chan int) {
-	ch <- num * num
-}
-
 func main() {
 	ch := make(chan int)
 
-	go square(5, ch)
+	go func() {
+		for i := 0; i < 5; i++ {
+			ch <- i
+		}
+	}()
 
-	result := <-ch
-	fmt.Println("Result:", result)
+	for i := 0; i <= 3; i++ {
+		fmt.Println(<-ch)
+	}
 }
