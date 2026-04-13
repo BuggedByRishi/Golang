@@ -2,26 +2,15 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
-func printNumbers() {
-	for i := 1; i <= 5; i++ {
-		fmt.Println("Numbers: ", i)
-		time.Sleep(time.Millisecond * 300)
-	}
-}
-
-func printLetters() {
-	for i := 'A'; i <= 'Z'; i++ {
-		fmt.Println("Letters: ", string(i))
-		time.Sleep(time.Millisecond * 300)
-	}
-}
-
 func main() {
-	go printLetters()
-	go printNumbers()
+	ch := make(chan int)
 
-	time.Sleep(2 * time.Second)
+	go func() {
+		ch <- 42 // Send value
+	}()
+
+	value := <-ch // Receive value
+	fmt.Println("Received:", value)
 }
