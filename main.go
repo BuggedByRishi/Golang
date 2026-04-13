@@ -4,13 +4,15 @@ import (
 	"fmt"
 )
 
+func square(num int, ch chan int) {
+	ch <- num * num
+}
+
 func main() {
 	ch := make(chan int)
 
-	go func() {
-		ch <- 42 // Send value
-	}()
+	go square(5, ch)
 
-	value := <-ch // Receive value
-	fmt.Println("Received:", value)
+	result := <-ch
+	fmt.Println("Result:", result)
 }
